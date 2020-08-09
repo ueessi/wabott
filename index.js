@@ -64,7 +64,7 @@ async function msgHandler (client, message) {
             if (isGroupMsg) console.log(color('[EXEC]'), color(time, 'yellow'), color(cmd[0]), 'from', color(pushname), 'in', color(formattedTitle))
             switch (cmd[0]) {
                 case '/helep':
-                    client.sendText(from, '👉 *SELAMAT DATANG* 👈 \n⏰ Bot online pukul 07.00-22.00 \n📌 Sebelum menggunakan, \ntes dengan chat P dulu, \njika bot membalas, maka bot online \n\nMenu: \n1. /tiker \n2. /toktok \n3. /igr \n4. /twit \n5. /pesbuk \n6. /quotes \n7. /bucin \n\n❌ *Mohon jangan spam stiker* ❌ \n            kasih jeda 5-10 detik yaa. \n\n❣️ *TERIMA KASIH* ❣️')
+                    client.sendText(from, '👉 *SELAMAT DATANG* 👈 \n⏰ Bot online pukul 07.00-22.00 \n📌 Sebelum menggunakan, \ntes dengan chat P dulu, \njika bot membalas, maka bot online \n\nMenu: \n1. /tiker \n2. /toktok \n3. /igr \n4. /twit \n5. /pesbuk \n6. /quotes \n7. /bucin \n\n❌ *Mohon jangan spam stiker* ❌ \n         kasih jeda 5-10 detik yaa. \n\n          ❣️ *TERIMA KASIH* ❣️')
                     break
                 case 'assalamualaikum':
                     client.sendText(from, 'waalaikumsalam wr. wb.')
