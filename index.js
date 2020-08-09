@@ -52,7 +52,7 @@ async function msgHandler (client, message) {
         const { pushname } = sender
         const { formattedTitle } = chat
         const time = moment(t * 1000).format('DD/MM HH:mm:ss')
-        const commands = ['/helep','/tiker', '/toktok', '/igr', '/twit', '/pesbuk','/quotes', '/bucin', 'assalamualaikm', 'P', 'thul', 'ngopi', ]
+        const commands = ['#help', '#menu', '#stiker', '#sticker', '#tik', '#ig', '#tw', '#fb','#quotes', '#bucin', 'test', 'tes', 'assalamualaikum', 'P', 'oi', 'oii', 'woi', 'woii', 'thul', 'ngopi', 'hai', 'hallo', 'hi', 'halo', 'bot', 'selamat pagi', 'pagi', 'pgi', 'pgii', 'selamat siang', 'siang', 'selamat malam', 'malam', 'mlam', 'mlm', 'makasi', 'makasih', 'thanks', 'thank', 'maacii', 'mas', 'mbak', 'mba']
         const cmds = commands.map(x => x + '\\b').join('|')
         const cmd = type === 'chat' ? body.match(new RegExp(cmds, 'gi')) : type === 'image' && caption ? caption.match(new RegExp(cmds, 'gi')) : ''
         const args = body.trim().split(' ')
@@ -63,32 +63,78 @@ async function msgHandler (client, message) {
             if (!isGroupMsg) console.log(color('[EXEC]'), color(time, 'yellow'), color(cmd[0]), 'from', color(pushname))
             if (isGroupMsg) console.log(color('[EXEC]'), color(time, 'yellow'), color(cmd[0]), 'from', color(pushname), 'in', color(formattedTitle))
             switch (cmd[0]) {
-                case '/helep':
-                    client.sendText(from, '👉 *SELAMAT DATANG* 👈 \n⏰ Bot online pukul 07.00-22.00 \n📌 Sebelum menggunakan, \ntes dengan chat P dulu, \njika bot membalas, maka bot online \n\nMenu: \n1. /tiker \n2. /toktok \n3. /igr \n4. /twit \n5. /pesbuk \n6. /quotes \n7. /bucin \n\n❌ *Mohon jangan spam stiker* ❌ \n         kasih jeda 5-10 detik yaa. \n\n          ❣️ *TERIMA KASIH* ❣️')
+                case '#help':
+                case '#menu':
+                    client.sendText(from, '👉 *SELAMAT DATANG* 👈 \n⏰ Bot online pukul 07.00-22.00 \n📌 Sebelum menggunakan, \ntes dengan chat P dulu, \njika bot membalas, maka bot online \n\nMenu: \n1. #stiker / #sticker \nuntuk membuat stiker dengan cara kirim / balas gambar dengan caption #stiker \n2. #tik \nuntuk mendownload video tiktok dengan cara ketik #tik spasi link \n3. #ig \nuntuk mendownload video instagram dengan cara ketik #ig spasi link \n4. #tw \nuntuk mendownload vide twitter dengan cara ketik #tw spasi link \n5. #fb \nuntuk mendownload video facebook dengan cara ketik #fb spasi link \n6. #quotes \nakan mengirim kata kata quotes \n7. #bucin \nhampir sama dengan quotes \n\n❌ *Mohon jangan spam stiker* ❌ \n        kasih jeda 5-10 detik yaa. \n\n         ❣️ *TERIMA KASIH* ❣️')
+                    break
+                case 'hai':
+                case 'hi':
+                    client.sendText(from, 'hallo')
+                    break
+                case 'halo':
+                case 'hallo':
+                    client.sendText(from, 'hi')
+                    break
+                case 'test':
+                case 'tes':
+                    client.sendText(from, 'on')
+                    break
+                case 'thul':
+                case 'tul':
+                case 'mas':
+                case 'mbak':
+                case 'mba':
+                case 'bot':
+                    client.sendText(from, 'dalem')
+                    break
+                case 'selamat pagi':
+                case 'pagi':
+                case 'pgi':
+                case 'pgii":
+                    client.sendText(from, 'selamat pagi juga ❣️')
+                    break
+                case 'selamat siang':
+                case 'siang':
+                    client.sendText(from, 'selamat siang juga ❣️')
+                    break
+                case 'selamat malam':
+                case 'malam':
+                case 'mlam':
+                case 'mlm':
+                    client.sendText(from, 'selamat malam juga ❣️')
+                    break
+                case 'makasi':
+                case 'makasih':
+                case 'thanks':
+                case 'thank':
+                case 'maacii':
+                    client.sendText(from, 'sama sama')
                     break
                 case 'assalamualaikum':
                     client.sendText(from, 'waalaikumsalam wr. wb.')
                     break
                 case 'P':
+                case 'oi':
+                case 'oii':
+                case 'woi':
+                case 'woii':
                     client.sendText(from, 'yang sopan dikit napa.')
-                    break
-                case 'thul':
-                    client.sendText(from, 'dalem')
                     break
                 case 'ngopi':
                     client.sendText(from, 'kuy')
                     break
-                case '/quotes':
+                case '$quotes':
                     const quotes = await features.quotes()
                     if (quotes) {
                         await client.sendText(from, quotes)
                     }
                     break
-                case '/bucin':
+                case '#bucin':
                     const bucin = await features.bucin()
                     await client.sendText(from, bucin)
                     break
-                case '/tiker':
+                case '#stiker':
+                case '#sticker':
                     if (isMedia) {
                         const mediaData = await decryptMedia(message, uaOverride)
                         const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
@@ -107,10 +153,10 @@ async function msgHandler (client, message) {
                             client.sendText(from, 'maaf mint, link yang kamu kirim tidak valid.')
                         }
                     } else {
-                        client.sendText(from, 'gambarnya mana? \n\npake caption /tiker ya mint')
+                        client.sendText(from, 'gambarnya mana? \n\npake caption #srtiker ya mint')
                     }
                     break
-                case '/toktok':
+                case '#tik':
                     if (args.length == 2) {
                         const url = args[1]
                         if (!url.match(isUrl) && !url.includes('tiktok.com')) return client.sendText(from, 'maaf mint, link yang kamu kirim tidak valid')
@@ -126,7 +172,7 @@ async function msgHandler (client, message) {
                             });
                     }
                     break
-                case '/igr':
+                case '#ig':
                     if (args.length == 2) {
                         const url = args[1]
                         if (!url.match(isUrl) && !url.includes('instagram.com')) return client.sendText(from, 'maaf mint, link yang kamu kirim tidak valid')
@@ -151,7 +197,7 @@ async function msgHandler (client, message) {
                             });
                     }
                     break
-                case '/twit':
+                case '#tw':
                     if (args.length == 2) {
                         const url = args[1]
                         if (!url.match(isUrl) && !url.includes('twitter.com') || url.includes('t.co')) return client.sendText(from, 'maaf mint, url yang kamu kirim tidak valid')
@@ -178,7 +224,7 @@ async function msgHandler (client, message) {
                             });
                     }
                     break
-                case '#fesbuk':
+                case '#fb':
                         if (args.length == 2) {
                             const url = args[1]
                             if (!url.match(isUrl) && !url.includes('facebook.com')) return client.sendText(from, 'maaf mint, url yang kamu kirim tidak valid')
