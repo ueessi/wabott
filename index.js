@@ -52,7 +52,7 @@ async function msgHandler (client, message) {
         const { pushname } = sender
         const { formattedTitle } = chat
         const time = moment(t * 1000).format('DD/MM HH:mm:ss')
-        const commands = ['/helep','/tiker', '/toktok', '/igr', '/twit', '/pesbuk','/quotes', '/bacot', '/bucin', 'assalamualaikm', 'P', 'thul', 'ngopi', ]
+        const commands = ['/helep','/tiker', '/toktok', '/igr', '/twit', '/pesbuk','/quotes', '/bucin', 'assalamualaikm', 'P', 'thul', 'ngopi', ]
         const cmds = commands.map(x => x + '\\b').join('|')
         const cmd = type === 'chat' ? body.match(new RegExp(cmds, 'gi')) : type === 'image' && caption ? caption.match(new RegExp(cmds, 'gi')) : ''
         const args = body.trim().split(' ')
@@ -64,14 +64,17 @@ async function msgHandler (client, message) {
             if (isGroupMsg) console.log(color('[EXEC]'), color(time, 'yellow'), color(cmd[0]), 'from', color(pushname), 'in', color(formattedTitle))
             switch (cmd[0]) {
                 case '/helep':
-                    client.sendText(from, '👉 *SELAMAT DATANG* 👈 \n⏰ Bot online pukul 07.00-22.00 \n📌 Sebelum menggunakan, tes dengan chat P , \njika bot membalas, maka bot online \n\nMenu: \n1. /tiker \n2. /toktok \n3. /igr \n4. /twit \n5. /pesbuk \n6. /quotes \n7. /bacot \n8. /bucin \n\n❌ *Mohon jangan spam stiker* ❌ \nkasih jeda 5-10 detik yaa. \n\n❣️ *TERIMA KASIH* ❣️')
+                    client.sendText(from, '👉 *SELAMAT DATANG* 👈 \n⏰ Bot online pukul 07.00-22.00 \n📌 Sebelum menggunakan, \ntes dengan chat P dulu, \njika bot membalas, maka bot online \n\nMenu: \n1. /tiker \n2. /toktok \n3. /igr \n4. /twit \n5. /pesbuk \n6. /quotes \n7. /bucin \n\n❌ *Mohon jangan spam stiker* ❌ \n            kasih jeda 5-10 detik yaa. \n\n❣️ *TERIMA KASIH* ❣️')
                     break
                 case 'assalamualaikum':
                     client.sendText(from, 'waalaikumsalam wr. wb.')
+                    break
                 case 'P':
                     client.sendText(from, 'yang sopan dikit napa.')
+                    break
                 case 'thul':
                     client.sendText(from, 'dalem')
+                    break
                 case 'ngopi':
                     client.sendText(from, 'kuy')
                     break
